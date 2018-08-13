@@ -1,0 +1,56 @@
+
+<button name="btnGetAllEmployee" (click)='GetAllEmployee()'>Get All Employee</button>
+<button name="btnAddEmployee" (click)='this.form = this.add = true'>Add Employee</button>
+
+<div *ngIf="this.form">
+  <hr />
+  <span>Id:</span>
+  <input type="number" name="NumId" [(ngModel)]='this.employee.id' />
+  <br />
+  <br />
+  <span>Name:</span>
+  <input type="text" name="txtName" [(ngModel)]='this.employee.name' />
+  <br />
+  <br />
+  <span>Age:</span>
+  <input type="number" name="numAge" [(ngModel)]='this.employee.age' />
+  <br />
+  <br />
+  <button name="btnSave" (click)='AddEmployee()'>Save</button>
+  <br />
+  <hr />
+  <br />
+</div>
+
+
+<p>
+  Employee Details
+</p>
+<table>
+  <thead>
+    <tr>
+      <th>
+        ID
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Age
+      </th>
+      <th>
+        Status
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees;trackBy:TrackByEmployeeCode">
+      <td>{{employee.id}}</td>
+      <td>{{employee.name}}</td>
+      <td>{{employee.age}}</td>
+      <td>{{employee.isPermanent}}</td>
+      <td><button name="btnDelete" (click)='DeleteEmployee(employee.id)'>Delete</button></td>
+      <td><button name="btnUpdate" (click)='UpdateEmployee(employee)'>Update</button></td>
+    </tr>
+  </tbody>
+</table>
